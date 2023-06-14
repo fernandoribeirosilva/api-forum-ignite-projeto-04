@@ -2,6 +2,8 @@
 value-object é uma forma de abstrair uma regra de negocio de um único campo da nossa
 entidade em uma class separada (arquivo)
 
+
+Partial => vai transforma qual quer propriedade em opcionais
 # SLUG
 É uma forma de identificar uma informação em especifico pelo navegador, neste caso usa o slug que é uma representação
 to titulo da perguntar sem acentos é sem caracteres especiais. Isso é bom para a indexação de não utilizar o id da pergunta
