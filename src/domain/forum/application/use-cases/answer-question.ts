@@ -12,7 +12,7 @@ interface AnswerQuestionUseCaseResponse {
 }
 
 export class AnswerQuestionUseCase {
-  constructor(private answerRepository: IAnswerRepository) { }
+  constructor(private answerRepository: IAnswerRepository) {}
 
   async execute({
     instructorId,

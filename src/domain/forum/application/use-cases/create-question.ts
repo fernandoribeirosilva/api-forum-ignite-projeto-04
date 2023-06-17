@@ -13,7 +13,7 @@ interface CreateQuestionUseCaseRequestResponse {
 }
 
 export class CreateQuestionUseCase {
-  constructor(private questionRepository: IQuestionRepository) { }
+  constructor(private questionRepository: IQuestionRepository) {}
 
   async execute({
     authorId,
