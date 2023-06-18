@@ -2,20 +2,20 @@ import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { Optional } from '@/core/types/optional'
 import { Comment, CommentProps } from './comment'
 
-export interface QuestionProps extends CommentProps {
+export interface QuestionCommentProps extends CommentProps {
   questionId: UniqueEntityID
 }
 
-export class Question extends Comment<QuestionProps> {
+export class QuestionComment extends Comment<QuestionCommentProps> {
   get questionId() {
     return this.props.questionId
   }
 
   static create(
-    props: Optional<QuestionProps, 'createdAt'>,
+    props: Optional<QuestionCommentProps, 'createdAt'>,
     id?: UniqueEntityID,
   ) {
-    const question = new Question(
+    const question = new QuestionComment(
       {
         ...props,
         createdAt: props.createdAt ?? new Date(),
