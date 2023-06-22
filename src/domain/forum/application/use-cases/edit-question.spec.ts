@@ -7,18 +7,20 @@ import { EditQuestionUseCase } from './edit-question'
 import { NotAllowedError } from './errors/not-allowed-error'
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
-let inMemoryQUestionAttachmentsRepository: InMemoryQuestionAttachmentsRepository
+let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentsRepository
 let sut: EditQuestionUseCase
 
 describe('Edit Answer', () => {
   beforeEach(() => {
-    inMemoryQuestionsRepository = new InMemoryQuestionsRepository()
-    inMemoryQUestionAttachmentsRepository =
+    inMemoryQuestionAttachmentsRepository =
       new InMemoryQuestionAttachmentsRepository()
+    inMemoryQuestionsRepository = new InMemoryQuestionsRepository(
+      inMemoryQuestionAttachmentsRepository,
+    )
 
     sut = new EditQuestionUseCase(
       inMemoryQuestionsRepository,
-      inMemoryQUestionAttachmentsRepository,
+      inMemoryQuestionAttachmentsRepository,
     )
   })
 
@@ -32,7 +34,7 @@ describe('Edit Answer', () => {
 
     await inMemoryQuestionsRepository.create(newQuestion)
 
-    inMemoryQUestionAttachmentsRepository.items.push(
+    inMemoryQuestionAttachmentsRepository.items.push(
       makeQuestionAttachments({
         questionId: newQuestion.id,
         attachmentId: new UniqueEntityID('1'),
