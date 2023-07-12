@@ -5,7 +5,7 @@ import { DomainEvent } from './domain-event'
 type DomainEventCallback = (event: any) => void
 
 export class DomainEvents {
-  private static handlersMap: Record<string, DomainEventCallback[]> = {}
+  private static handlersMap: Record<string, DomainEventCallback[]> = {} // subscriber
   private static markedAggregates: AggregateRoot<any>[] = []
 
   public static markAggregateForDispatch(aggregate: AggregateRoot<any>) {
