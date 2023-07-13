@@ -31,6 +31,7 @@ class CustomAggregate extends AggregateRoot<null> {
   static create() {
     const aggregate = new CustomAggregate(null)
 
+    // criando o publish
     aggregate.addDomainEvent(new CustomAggregateCreated(aggregate))
 
     return aggregate
