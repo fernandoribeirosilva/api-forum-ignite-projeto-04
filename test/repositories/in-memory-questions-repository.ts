@@ -1,3 +1,4 @@
+import { DomainEvents } from '@/core/events/domain.events'
 import { PaginationParams } from '@/core/repositories/pagination-params'
 import { IQuestionAttachmentsRepository } from '@/domain/forum/application/repositories/IQuestion-attachments-repository'
 import { IQuestionRepository } from '@/domain/forum/application/repositories/IQuestion-repository'
@@ -38,10 +39,14 @@ export class InMemoryQuestionsRepository implements IQuestionRepository {
     const itemIndex = this.items.findIndex((item) => item.id === question.id)
 
     this.items[itemIndex] = question
+
+    DomainEvents.dispatchEventsForAggregate(question.id)
   }
 
   async create(question: Question) {
     this.items.push(question)
+
+    DomainEvents.dispatchEventsForAggregate(question.id)
   }
 
   async delete(question: Question) {
